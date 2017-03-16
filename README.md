@@ -1,4 +1,4 @@
-![alt text](https://github.com/abhilb/parunthu/raw/master/src/common/images/parunthu.png "parunthu")
+![parunthu](https://github.com/abhilb/parunthu/blob/master/parunthu.png "parunthu")
 
 
 # parunthu
