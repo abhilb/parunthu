@@ -19,4 +19,4 @@ function! s:RemoveTags()
     echom "here the magic happens!"
 endfunction
 
-autocmd BufRead *.hdev call RemoveTags
+autocmd BufRead *.hdev call s:RemoveTags()
