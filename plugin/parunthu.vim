@@ -1,0 +1,22 @@
+
+" File: parunthu.vim
+" Author: Abhilash Babu
+" Version: 0.1.0
+" email: abhilashbabuj at gmail dot com
+" Copyright: Copyright (c) 2017-2018 Abhilash Babu
+" License: MIT license
+
+
+if exists('loaded_parinthu')
+    finish
+endif
+
+let loaded_parithu = 1
+let s:cpo_save = &cpo
+set cpo&vim
+
+function! s:RemoveTags()
+    echom "here the magic happens!"
+endfunction
+
+autocmd BufRead *.hdev call RemoveTags
