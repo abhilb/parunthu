@@ -1,2 +1,4 @@
 read_image(Image, 'Fabrik')
+write_image(Image, 'bmp', 0, 'test.bmp')
+
 

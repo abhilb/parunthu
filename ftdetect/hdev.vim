@@ -1,9 +1,7 @@
 
-
-echom "Setting the filetype auto command for hdev"
-
-
-au BufNewFile,BufRead *.hdev set filetype=hdev
+augroup filetypedetect
+    au! BufNewFile,BufRead *.hdev setfiletype hdev
+augroup END
 
 
 
