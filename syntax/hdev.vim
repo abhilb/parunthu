@@ -1,6 +1,9 @@
 
+syntax match hdevComment "\v\*.*$"
+highlight link hdevComment Comment
 
 
+" keywords {{{
 syntax keyword hdevKeywords
     \ read_image
     \ write_image
@@ -2195,6 +2198,7 @@ syntax keyword hdevKeywords
     \ zoom_image_size
     \ zoom_region
     \ index_classes
-     
-    highlight default link hdevKeywords Keyword
+"}}} 
+
+highlight default link hdevKeywords Keyword
      
