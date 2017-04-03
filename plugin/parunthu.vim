@@ -19,3 +19,6 @@ function! s:RemoveTags()
 endfunction
 
 autocmd BufRead *.hdev call s:RemoveTags()
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
