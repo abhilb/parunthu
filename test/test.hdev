@@ -3,6 +3,7 @@ write_image(Image, 'bmp', 0, 'test.bmp')
 
 threshold(Image, Reg, 10, 10)
 
-* test
+<c>* test</c>
+<c>* adfaf</c>
 
 
