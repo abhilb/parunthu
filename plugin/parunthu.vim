@@ -22,9 +22,14 @@ function! s:CurateScript()
     let l:line_num = 1
     while l:line_num <= line("$")
         let l:line_text = getline(l:line_num)
-        let l:mod_line_text = substitute(l:line_text, "<c>", "", "")
-        let l:mod_line_text = substitute(l:mod_line_text, "</c>", "", "")
-        call setline(l:line_num, l:mod_line_text)        
+
+        let l:found_str =  matchstr(l:line_text, "<c>")
+
+        if l:found_str == "<c>"
+            let l:mod_line_text = substitute(l:line_text, "<c>", "", "")
+            let l:mod_line_text = substitute(l:mod_line_text, "</c>", "", "")
+            call setline(l:line_num, l:mod_line_text)        
+        endif
         let l:line_num = l:line_num + 1
     endwhile
 
