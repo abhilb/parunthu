@@ -15,31 +15,36 @@ let loaded_parithu = 1
 let s:cpo_save = &cpo
 set cpo&vim
 
+function! s:IsComment(line_text)
+    let l:found_comment =  matchstr(a:line_text, "<c>")
+    if l:found_comment == "<c"
+        return 1
+    endif
+endfunction
+
+function! s:IsCode(line_text)
+    let l:found_code = matchstr(a:line_text, "<l>")
+    if l:found_code == "<l"
+        return 1
+    endif
+endfunction
+
 function! s:CurateScript()
     "Remove all tags make the script show as shown in Hdevelop
     echom "Editing the script"
     echom string(line('$'))
     let l:line_num = 1
     while l:line_num <= line("$")
-        let l:line_text = getline(l:line_num)
+        let cur_line_text = getline(l:line_num)
 
-        " Remove the comments
-        let l:found_str =  matchstr(l:line_text, "<c>")
-
-        if l:found_str == "<c>"
-            let l:mod_line_text = substitute(l:line_text, "<c>", "", "")
+        if <SID>IsComment(cur_line_text) 
+            let l:mod_line_text = substitute(cur_line_text, "<c>", "", "")
             let l:mod_line_text = substitute(l:mod_line_text, "</c>", "", "")
             call setline(l:line_num, l:mod_line_text)        
-        else
-
-                "Remove the line tags
-            unlet l:found_str
-            let l:found_str = matchstr(l:line_text, "<l>")
-            if l:found_str == "<l>"
-                let l:mod_line_text = substitute(l:line_text, "<l>", "", "")
-                let l:mod_line_text = substitute(l:mod_line_text, "</l>", "", "")
-                call setline(l:line_num, l:mod_line_text)        
-            endif
+        elseif <SID>IsCode(cur_line_text)
+            let l:mod_line_text = substitute(cur_line_text, "<l>", "", "")
+            let l:mod_line_text = substitute(l:mod_line_text, "</l>", "", "")
+            call setline(l:line_num, l:mod_line_text)        
         endif
 
         let l:line_num = l:line_num + 1
